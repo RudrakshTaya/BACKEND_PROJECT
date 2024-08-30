@@ -1,17 +1,46 @@
-import express from 'express';  
+// server.js
+const express = require('express');
+const cors = require('cors');
+const connectDB = require('./src/Database/db'); 
+const Card = require('./src/Models/Cards'); // Import the Card model
+
 const app = express();
-const PORT = 4000;  
-import dotenv from "dotenv"
-dotenv.config({
-    path:'./env'
-})
-import connectDB from './src/Database/db.js';
-app.get('/', (req, res) => {
-    res.send("hello");
-});
+const port = process.env.PORT || 5002;
 
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Connect to the database
 connectDB();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// API route to get all cards
+app.get('/cards', async (req, res) => {
+  try {
+    const cards = await Card.find();
+    res.json(cards);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// API route to add a new card
+app.post('/cards', async (req, res) => {
+  const newCard = new Card({
+    title: req.body.title,
+    text: req.body.text,
+    imgSrc: req.body.imgSrc,
+    link: req.body.link,
+  });
+
+  try {
+    const savedCard = await newCard.save();
+    res.status(201).json(savedCard);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
