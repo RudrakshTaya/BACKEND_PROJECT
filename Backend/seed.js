@@ -157,6 +157,12 @@ const allCards = [
           imgSrc: 'https://t4.ftcdn.net/jpg/09/23/69/97/360_F_923699743_J8Au3Dg23NwAmWWEMfZ7AYKS1LYDrBxE.jpg',
           link: '/#card3' // Add link for each card
         },
+        {
+          title: 'Card 25',
+          text: 'This is card 3',
+          imgSrc: 'https://t4.ftcdn.net/jpg/09/23/69/97/360_F_923699743_J8Au3Dg23NwAmWWEMfZ7AYKS1LYDrBxE.jpg',
+          link: '/#card3' // Add link for each card
+        },
   
 ];
 

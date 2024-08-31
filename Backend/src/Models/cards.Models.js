@@ -6,7 +6,7 @@ const cardSchema = new mongoose.Schema({
   imgSrc: String,
   link: String,
   price: String,
-  rating: Number
+  rating: Number,
 });
 
 const Card = mongoose.model('Card', cardSchema);
