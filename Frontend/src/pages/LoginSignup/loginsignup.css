@@ -3,6 +3,9 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    /* background-image: url(../../components/Assets/login-background.png);
+    background-position: cover; */
+    background-image: linear-gradient(to bottom right, rgb(19, 133, 19), rgb(41, 255, 59));
 }
 
 .container{
@@ -27,7 +30,7 @@
 }
 
 .text{
-    color: #FF9900;
+    color: #009700;
     font-size: 48px;
     font-weight: 700px;
 }
@@ -35,7 +38,7 @@
 .underline{
     width : 70px;
     height: 6px;
-    background: #FF9900;
+    background: #009700;
     border-radius: 9px;
 }
 
@@ -79,7 +82,7 @@
 
 .forget-password span{
     cursor:pointer;
-    color: #FF9900;
+    color: #009700;
 }
 
 .submit-container{
@@ -95,7 +98,7 @@
     width: 220px;
     height: 59px;
     color: #fff;
-    background: #FF9900;
+    background: #009700;
     border-radius: 50px;
     font-size: 19px;
     font-weight: 700;
