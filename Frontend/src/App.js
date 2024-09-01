@@ -34,7 +34,7 @@ function App() {
     <div>
       { isLoggedIn && (
         <Navbar expand='lg' className='fixed-top bg-body-tertiary shadow'>
-          <Container>
+          <Container className="d-flex flex-row justify-space-between align-items-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)', color: 'white' }}>
             <Navbar.Brand>
               <Link to='/' className='navbar-brand text-success d-flex align-items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="currentColor" className="bi bi-r-circle-fill" viewBox="0 0 16 16">
@@ -47,15 +47,17 @@ function App() {
                 </span>
               </Link>
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls='basic-navbar-nav' />
-            <Navbar.Collapse id='basic-navbar-nav'>
-              <Nav className='me-auto'>
-                <Link to='/' className='nav-link active text-uppercase'>Home</Link>
-                <Link to='/menu' className='nav-link text-uppercase'>Menu</Link>
-                <Link to='/about' className='nav-link text-uppercase'>About</Link>
-                <Link to='/contact' className='nav-link text-uppercase'>Contact</Link>
-              </Nav>
-            </Navbar.Collapse>
+            <div className="d-flex align-items-center">
+              <Navbar.Toggle aria-controls='basic-navbar-nav' />
+              <Navbar.Collapse id='basic-navbar-nav' className="ms-3">
+                <Nav className='d-flex flex-row'>
+                  <Link to='/' className='nav-link active text-uppercase'>Home</Link>
+                  <Link to='/menu' className='nav-link text-uppercase'>Menu</Link>
+                  <Link to='/about' className='nav-link text-uppercase'>About</Link>
+                  <Link to='/contact' className='nav-link text-uppercase'>Contact</Link>
+                </Nav>
+              </Navbar.Collapse>
+            </div>
           </Container>
         </Navbar>
       )}

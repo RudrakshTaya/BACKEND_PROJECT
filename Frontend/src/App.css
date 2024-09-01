@@ -4,7 +4,7 @@
 
 header {
   background-size: cover;
-  background-position: center;
+  /* background-position: center; */
 }
 
 header h1 {
@@ -20,7 +20,7 @@ img {
   height: 50vh;
 }
 
-/* App.css */
+
 
 body.login-page .navbar {
   display: none;

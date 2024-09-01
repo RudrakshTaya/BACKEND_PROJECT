@@ -6,8 +6,8 @@ import MenuBtn from '../MenuBtn/MenuBtn';
 
 function MenuSection() {
   return (
-    <div className="menu-section py-5 text-light shdow">
-        <div className="container d-flex flex-column align-items-center">
+    <div className="menu-section py-5 text-light shadow">
+        <div className="container d-flex flex-column align-items-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)', color: 'white' }}>
             <h2 className='fs-1 mb-5 text-uppercase fw-bold text-center'>Some of our favorites</h2>
             <div className="row mb-4 mb-lg-5 w-100">
                 <div className="col-lg-6 d-flex flex-column align-items-center mb-4 mb-4 mb-lg-0">

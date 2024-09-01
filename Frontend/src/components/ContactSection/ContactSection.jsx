@@ -6,7 +6,7 @@ import ContactSectionImg from '../../utils/images/contact-section-img.jpg';
 function ContactSection() {
   return (
     <div className='contact-section text-light py-5 shadow'>
-        <div className="container">
+        <div className="container" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)', color: 'white' }}>
             <div className="row">
                 <div className="col-lg-6 d-flex flex-column align-items-cneter justify-content-center mb-5 mb-lg-0">
                     <ContactInfo />

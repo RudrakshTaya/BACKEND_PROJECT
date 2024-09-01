@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <header className='height-100-header h-100 min-vh-100 d-flex align-items-center text-light shadow'>
-        <div className="container d-flex justify-content-center">
+        <div className="container d-flex justify-content-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)', color: 'white' }}>
             <div className='h-100 d-flex flex-column align-items-start'>
                 <h2 className='text-capitalize fw-bold fs-1'>Welcome to</h2>
                 <h1 className='text-capitalize fw-bold'>4'R Restaurant</h1>
