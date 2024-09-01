@@ -4,6 +4,7 @@ import password_icon from '../../components/Assets/password.png';
 import person_icon from '../../components/Assets/person.png';
 import { useNavigate } from 'react-router-dom';
 import './loginsignup.css';
+// import axios from 'axios';
 
 const LoginSignup = () => {
     const [action, setAction] = useState("Login"); // Default to Login

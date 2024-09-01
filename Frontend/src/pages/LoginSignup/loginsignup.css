@@ -3,9 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /* background-image: url(../../components/Assets/login-background.png);
-    background-position: cover; */
-    background-image: linear-gradient(to bottom right, rgb(19, 133, 19), rgb(41, 255, 59));
+    /* background-image: linear-gradient(to bottom right, rgb(19, 133, 19), rgb(41, 255, 59)); */
 }
 
 .container{
@@ -16,7 +14,7 @@
     background:  #fff;
     padding: 8px 8px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
     
 }
 
