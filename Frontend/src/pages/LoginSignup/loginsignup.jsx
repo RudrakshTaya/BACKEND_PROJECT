@@ -13,23 +13,29 @@ const LoginSignup = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    const handleLogin = () => {
+        if (email === 'user@example.com' && password === 'password') { // Replace with real authentication logic
+            localStorage.setItem('isAuthenticated', 'true');
+            navigate('/');
+        } else {
+            alert('Invalid email or password');
+        }
+    };
+
+    const handleSignUp = () => {
+        // Normally, you would send the data to a backend server for sign-up
+        console.log('Name:', name);
+        console.log('Email:', email);
+        console.log('Password:', password);
+        alert('Signed Up successfully!');
+        setAction('Login');
+    };
+
     const handleSubmit = () => {
         if (action === "Login") {
-            // Handle Login logic here
-            if (email === 'user@example.com' && password === 'password') { // Replace with real authentication logic
-                localStorage.setItem('isAuthenticated', 'true');
-                navigate('/');
-            } else {
-                alert('Invalid email or password');
-            }
+            handleLogin();
         } else {
-            // Handle Sign Up logic here
-            // Normally, you would send the data to a backend server for sign-up
-            console.log('Name:', name);
-            console.log('Email:', email);
-            console.log('Password:', password);
-            alert('Signed Up successfully!');
-            setAction('Login');
+            handleSignUp();
         }
     };
 
@@ -84,15 +90,15 @@ const LoginSignup = () => {
                 <div className="submit-container">
                     <button 
                         className={action === "Sign Up" ? "submit" : "submit grey"} 
-                        onClick={() => action === "Sign Up" ? handleSubmit() : setAction("Sign Up")}
+                        onClick={handleSubmit}
                     >
-                        Sign Up
+                        {action === "Sign Up" ? "Sign Up" : "Switch to Sign Up"}
                     </button>
                     <button 
                         className={action === "Login" ? "submit" : "submit grey"} 
-                        onClick={() => action === "Login" ? handleSubmit() : setAction("Login")}
+                        onClick={handleSubmit}
                     >
-                        Login
+                        {action === "Login" ? "Login" : "Switch to Login"}
                     </button>
                 </div>
             </div>
