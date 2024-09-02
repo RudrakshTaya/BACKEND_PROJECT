@@ -35,7 +35,7 @@ function App() {
   return (
     <div>
       { isLoggedIn && (
-        <Navbar expand='lg' className='fixed-top bg-body-tertiary shadow'>
+        <Navbar expand='lg' className='bg-body-tertiary shadow'>
           <Container className="d-flex flex-row justify-space-between align-items-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)', color: 'white' }}>
             <Navbar.Brand>
               <Link to='/' className='navbar-brand text-success d-flex align-items-center'>
