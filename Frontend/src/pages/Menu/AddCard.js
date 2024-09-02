@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './AddCard.css';
 function AddCard() {
   const [title, setTitle] = useState('');
@@ -8,7 +7,6 @@ function AddCard() {
   const [link, setLink] = useState('');
   const [price, setPrice] = useState('');
   const [rating, setRating] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,9 +17,10 @@ function AddCard() {
         body: JSON.stringify({ title, text, imgSrc, link, price, rating }),
       });
       if (response.ok) {
-        navigate('/menu');
+        // Handle successful addition
+        console.log('Card added successfully');
       } else {
-        alert('Failed to add card');
+        console.error('Failed to add card');
       }
     } catch (error) {
       console.error('Error adding card:', error);
@@ -29,13 +28,32 @@ function AddCard() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Title" required />
-      <textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="Description" required />
-      <input type="text" value={imgSrc} onChange={(e) => setImgSrc(e.target.value)} placeholder="Image URL" required />
-      <input type="text" value={link} onChange={(e) => setLink(e.target.value)} placeholder="Link" required />
-      <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Price" required />
-      <input type="text" value={rating} onChange={(e) => setRating(e.target.value)} placeholder="Rating" required />
+    <form onSubmit={handleSubmit} className="add-card-form">
+      <h2>Add Card</h2>
+      <div className="form-group">
+        <label>Title</label>
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+      </div>
+      <div className="form-group">
+        <label>Text</label>
+        <textarea value={text} onChange={(e) => setText(e.target.value)} required />
+      </div>
+      <div className="form-group">
+        <label>Image URL</label>
+        <input type="text" value={imgSrc} onChange={(e) => setImgSrc(e.target.value)} required />
+      </div>
+      <div className="form-group">
+        <label>Link</label>
+        <input type="text" value={link} onChange={(e) => setLink(e.target.value)} required />
+      </div>
+      <div className="form-group">
+        <label>Price</label>
+        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} required />
+      </div>
+      <div className="form-group">
+        <label>Rating</label>
+        <input type="number" value={rating} onChange={(e) => setRating(e.target.value)} required />
+      </div>
       <button type="submit">Add Card</button>
     </form>
   );

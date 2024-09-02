@@ -90,7 +90,8 @@ function App() {
           }
         />
         <Route path="/login" element={<LoginSignup />} />
-        <Route path="/update-card/:id" element={<UpdateCard />} />
+        <Route path="/update-card/:cardId" element={<UpdateCard />} />
+
         <Route path="/add-card" element={<AddCard />} />
       </Routes>
 

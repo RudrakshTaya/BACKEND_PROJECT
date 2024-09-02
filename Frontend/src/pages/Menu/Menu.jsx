@@ -49,8 +49,8 @@ function Menu() {
         </div>
       </header>
       <div className="card-container">
-        {cards.map((card, index) => (
-          <div className="card" key={index}>
+        {cards.map((card) => (
+          <div className="card" key={card._id}>
             <Link to={card.link} className="card-link">
               <div>
                 <img src={card.imgSrc} alt={card.title} className="card-image" />

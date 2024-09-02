@@ -19,7 +19,7 @@ router.get('/', getCards);
 router.post('/', addCard);
 
 // Update a card by ID
-router.put('/:id', updateCard);
+router.put('/:cardId', updateCard);
 
 // Delete a card by ID
 router.delete('/:id', deleteCard);
