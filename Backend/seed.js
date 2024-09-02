@@ -140,51 +140,29 @@ const allCards = [
           rating:3.8
         },
         {
-          title: 'Card 17',
-          text: 'This is card 2',
-          imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ5yRajIt8KX-DMiS8sp4BXEf02YjmqsqLvXFN9Y4Dz-hfpMUJnl4lcwhnVxo2bdbs5vQ&usqp=CAU',
-          link: '/#card2' // Add link for each card
+          title: 'Chocolate Truffle Pastry',
+          text: 'Layers of soft chocolate and dense but silky-smooth chocolate ganache.',
+          imgSrc: 'https://th.bing.com/th/id/OIP.Q0VhN4vj6puL7VcSkhAckgHaE8?rs=1&pid=ImgDetMain',
+          link: '/#card2', // Add link for each card
+          price:'$25',
+          rating:3.9
         },
         {
-          title: 'Card 18',
-          text: 'This is card 3',
-          imgSrc: 'https://t4.ftcdn.net/jpg/09/23/69/97/360_F_923699743_J8Au3Dg23NwAmWWEMfZ7AYKS1LYDrBxE.jpg',
-          link: '/#card3' // Add link for each card
+          title: 'Red Velvet Pastry',
+          text: 'The pastry with red velvet shade, frosting with butter cream.',
+          imgSrc: 'https://product-assets.faasos.io/production/product/image_1657272196421_image_1635342896740_Rich_Red_Velvet_Pastry.jpg',
+          link: '/#card3' ,// Add link for each card
+          price:'$18',
+          rating:3.5
+    
         },
         {
-          title: 'Card 20',
-          text: 'This is card 2',
-          imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ5yRajIt8KX-DMiS8sp4BXEf02YjmqsqLvXFN9Y4Dz-hfpMUJnl4lcwhnVxo2bdbs5vQ&usqp=CAU',
-          link: '/#card2' // Add link for each card
-        },
-        {
-          title: 'Card 21',
-          text: 'This is card 3',
-          imgSrc: 'https://t4.ftcdn.net/jpg/09/23/69/97/360_F_923699743_J8Au3Dg23NwAmWWEMfZ7AYKS1LYDrBxE.jpg',
-          link: '/#card3' // Add link for each card
-        },{
-          title: 'Card 22',
-          text: 'This is card 1',
-          imgSrc: 'https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg',
-          link: '/#card1' // Add link for each card
-        },
-        {
-          title: 'Card 23',
-          text: 'This is card 2',
-          imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ5yRajIt8KX-DMiS8sp4BXEf02YjmqsqLvXFN9Y4Dz-hfpMUJnl4lcwhnVxo2bdbs5vQ&usqp=CAU',
-          link: '/#card2' // Add link for each card
-        },
-        {
-          title: 'Card 24',
-          text: 'This is card 3',
-          imgSrc: 'https://t4.ftcdn.net/jpg/09/23/69/97/360_F_923699743_J8Au3Dg23NwAmWWEMfZ7AYKS1LYDrBxE.jpg',
-          link: '/#card3' // Add link for each card
-        },
-        {
-          title: 'Card 25',
-          text: 'This is card 3',
-          imgSrc: 'https://t4.ftcdn.net/jpg/09/23/69/97/360_F_923699743_J8Au3Dg23NwAmWWEMfZ7AYKS1LYDrBxE.jpg',
-          link: '/#card3' // Add link for each card
+          title: 'Crispy Potato Taco',
+          text: 'Taco filled with crispy potato bites,lava sauces,nachos cheese sauce and topped with lettuce and tangy salsa.',
+          imgSrc: 'https://th.bing.com/th/id/OIP.ChSpupF7zHxNiDm4jzhPcAHaE9?rs=1&pid=ImgDetMain',
+          link: '/#card3' ,// Add link for each card
+          price:'$14',
+          rating:3.9
         },
   
 ];
