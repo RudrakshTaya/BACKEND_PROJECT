@@ -9,7 +9,7 @@ function About() {
   return (
     <div className='about-page'>
       <header className='height-50 mt-5'>
-        <div className="container h-100 d-flex align-items-center justify-content-center">
+        <div className="container h-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)', color: 'white' }}>
           <h1 className='text-light'>About</h1>
         </div>
       </header>
