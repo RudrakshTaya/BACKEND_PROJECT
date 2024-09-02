@@ -1,0 +1,61 @@
+/* AddCard.css */
+
+.add-card-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .add-card-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .add-card-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .add-card-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .add-card-form .form-group input,
+  .add-card-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  .add-card-form .form-group textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .add-card-form button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-card-form button:hover {
+    background-color: #218838;
+  }
+  
+  .add-card-form .error {
+    color: #dc3545;
+    margin-top: 10px;
+  }
+  

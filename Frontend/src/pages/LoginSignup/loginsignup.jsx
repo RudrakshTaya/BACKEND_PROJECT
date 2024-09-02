@@ -3,8 +3,8 @@ import email_icon from '../../components/Assets/email.png';
 import password_icon from '../../components/Assets/password.png';
 import person_icon from '../../components/Assets/person.png';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './loginsignup.css';
-// import axios from 'axios';
 
 const LoginSignup = () => {
     const [action, setAction] = useState("Login"); // Default to Login
@@ -13,29 +13,31 @@ const LoginSignup = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        if (email === 'user@example.com' && password === 'password') { // Replace with real authentication logic
-            localStorage.setItem('isAuthenticated', 'true');
-            navigate('/');
-        } else {
-            alert('Invalid email or password');
-        }
-    };
-
-    const handleSignUp = () => {
-        // Normally, you would send the data to a backend server for sign-up
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Password:', password);
-        alert('Signed Up successfully!');
-        setAction('Login');
-    };
-
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (action === "Login") {
-            handleLogin();
+            try {
+                const response = await axios.post('http://localhost:5002/users/login', { email, password });
+                if (response.data.msg === 'Logged in successfully') {
+                    localStorage.setItem('isAuthenticated', 'true');
+                    navigate('/');
+                } else {
+                    alert(response.data.msg);
+                }
+            } catch (error) {
+                alert('Error logging in. Please check your credentials and try again.');
+            }
         } else {
-            handleSignUp();
+            try {
+                const response = await axios.post('http://localhost:5002/users/signup', { name, email, password });
+                if (response.data.msg === 'User registered successfully') {
+                    alert('Signed up successfully! Please log in.');
+                    setAction('Login');
+                } else {
+                    alert(response.data.msg);
+                }
+            } catch (error) {
+                alert('Error signing up. Please try again.');
+            }
         }
     };
 
@@ -49,10 +51,10 @@ const LoginSignup = () => {
                 <div className="inputs">
                     {action === "Sign Up" && (
                         <div className="input">
-                            <img src={person_icon} alt="" />
+                            <img src={person_icon} alt="Name Icon" />
                             <input
                                 type="text"
-                                placeholder='Name'
+                                placeholder="Name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                                 required
@@ -61,10 +63,10 @@ const LoginSignup = () => {
                     )}
                 
                     <div className="input">
-                        <img src={email_icon} alt="" />
+                        <img src={email_icon} alt="Email Icon" />
                         <input
                             type="email"
-                            placeholder='Email'
+                            placeholder="Email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
@@ -72,10 +74,10 @@ const LoginSignup = () => {
                     </div>
                         
                     <div className="input">
-                        <img src={password_icon} alt="" />
+                        <img src={password_icon} alt="Password Icon" />
                         <input
                             type="password"
-                            placeholder='Password'
+                            placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -90,15 +92,15 @@ const LoginSignup = () => {
                 <div className="submit-container">
                     <button 
                         className={action === "Sign Up" ? "submit" : "submit grey"} 
-                        onClick={handleSubmit}
+                        onClick={() => action === "Sign Up" ? handleSubmit() : setAction("Sign Up")}
                     >
-                        {action === "Sign Up" ? "Sign Up" : "Switch to Sign Up"}
+                        Sign Up
                     </button>
                     <button 
                         className={action === "Login" ? "submit" : "submit grey"} 
-                        onClick={handleSubmit}
+                        onClick={() => action === "Login" ? handleSubmit() : setAction("Login")}
                     >
-                        {action === "Login" ? "Login" : "Switch to Login"}
+                        Login
                     </button>
                 </div>
             </div>
