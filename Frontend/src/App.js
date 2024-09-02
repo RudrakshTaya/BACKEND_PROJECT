@@ -11,6 +11,8 @@ import Menu from './pages/Menu/Menu';
 import LoginSignup from './pages/LoginSignup/loginsignup';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import AddCard from './pages/Menu/AddCard';
+import UpdateCard from './pages/Menu/UpdateCard';
 
 function App() {
   const location = useLocation();
@@ -88,6 +90,8 @@ function App() {
           }
         />
         <Route path="/login" element={<LoginSignup />} />
+        <Route path="/update-card/:id" element={<UpdateCard />} />
+        <Route path="/add-card" element={<AddCard />} />
       </Routes>
 
       {isLoggedIn && <Footer />}

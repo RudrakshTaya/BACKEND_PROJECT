@@ -1,0 +1,61 @@
+/* UpdateCard.css */
+
+.update-card-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .update-card-form h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .update-card-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .update-card-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .update-card-form .form-group input,
+  .update-card-form .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+  }
+  
+  .update-card-form .form-group textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  .update-card-form button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .update-card-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .update-card-form .error {
+    color: #dc3545;
+    margin-top: 10px;
+  }
+  
