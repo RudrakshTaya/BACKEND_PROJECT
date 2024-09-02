@@ -11,7 +11,7 @@ function UpdateCard() {
   useEffect(() => {
     const fetchCard = async () => {
       try {
-        const response = await fetch(`http://localhost:5002/cards/${cardId}`);
+        const response = await fetch(`http://localhost:5002/cards`);
         if (response.ok) {
           const data = await response.json();
           setCard(data);
