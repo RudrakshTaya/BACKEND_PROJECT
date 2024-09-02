@@ -157,33 +157,12 @@ const allCards = [
     
         },
         {
-          title: 'Card 21',
-          text: 'This is card 3',
-          imgSrc: 'https://t4.ftcdn.net/jpg/09/23/69/97/360_F_923699743_J8Au3Dg23NwAmWWEMfZ7AYKS1LYDrBxE.jpg',
-          link: '/#card3' // Add link for each card
-        },{
-          title: 'Card 22',
-          text: 'This is card 1',
-          imgSrc: 'https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg',
-          link: '/#card1' // Add link for each card
-        },
-        {
-          title: 'Card 23',
-          text: 'This is card 2',
-          imgSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ5yRajIt8KX-DMiS8sp4BXEf02YjmqsqLvXFN9Y4Dz-hfpMUJnl4lcwhnVxo2bdbs5vQ&usqp=CAU',
-          link: '/#card2' // Add link for each card
-        },
-        {
-          title: 'Card 24',
-          text: 'This is card 3',
-          imgSrc: 'https://t4.ftcdn.net/jpg/09/23/69/97/360_F_923699743_J8Au3Dg23NwAmWWEMfZ7AYKS1LYDrBxE.jpg',
-          link: '/#card3' // Add link for each card
-        },
-        {
-          title: 'Card 25',
-          text: 'This is card 3',
-          imgSrc: 'https://t4.ftcdn.net/jpg/09/23/69/97/360_F_923699743_J8Au3Dg23NwAmWWEMfZ7AYKS1LYDrBxE.jpg',
-          link: '/#card3' // Add link for each card
+          title: 'Crispy Potato Taco',
+          text: 'Taco filled with crispy potato bites,lava sauces,nachos cheese sauce and topped with lettuce and tangy salsa.',
+          imgSrc: 'https://th.bing.com/th/id/OIP.ChSpupF7zHxNiDm4jzhPcAHaE9?rs=1&pid=ImgDetMain',
+          link: '/#card3' ,// Add link for each card
+          price:'$14',
+          rating:3.9
         },
   
 ];
