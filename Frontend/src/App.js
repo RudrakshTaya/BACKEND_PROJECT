@@ -31,7 +31,6 @@ function App() {
     }
   }, [location]);
 
-  // fixed-top bg-body-tertiary shadow
   return (
     <div>
       { isLoggedIn && (

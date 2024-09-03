@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true, // Enforce unique email
+        unique: true,
     },
     password: {
         type: String,
@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema({
     },
 });
 
-// Hash password before saving
+// Hashing
 UserSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
         return next();
@@ -27,7 +27,7 @@ UserSchema.pre('save', async function (next) {
     next();
 });
 
-// Compare passwords
+// Comparing passwords
 UserSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 };

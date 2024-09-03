@@ -3,7 +3,7 @@ const User = require('../Models/user.Models');
 
 const router = express.Router();
 
-// Sign Up Route
+// Sign Up
 router.post('/signup', async (req, res) => {
     const { name, email, password } = req.body;
 
@@ -24,7 +24,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// Login Route
+// Login
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -43,15 +43,6 @@ router.post('/login', async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
-});
-
-// Logout Route
-router.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) return res.status(500).send('Server Error');
-        res.clearCookie('connect.sid');
-        res.json({ msg: 'Logged out successfully' });
-    });
 });
 
 module.exports = router;
