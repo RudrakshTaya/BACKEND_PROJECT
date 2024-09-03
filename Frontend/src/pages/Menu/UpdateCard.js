@@ -6,7 +6,7 @@ function UpdateCard() {
   const { cardId } = useParams();
   const [card, setCard] = useState(null);
   const [error, setError] = useState(null); // State for handling errors
-  const [success, setSuccess] = useState(null); // State for handling success messages
+  const [success] = useState(null); // State for handling success messages
 
   useEffect(() => {
     const fetchCard = async () => {
@@ -37,10 +37,10 @@ function UpdateCard() {
         body: JSON.stringify(card),
       });
       if (response.ok) {
-        setSuccess('Card updated successfully');
+        alert('Card updated successfully');
       } else {
         console.error('Failed to update card');
-        setError('Failed to update card');
+        alert('Failed to update card');
       }
     } catch (error) {
       console.error('Error updating card:', error);

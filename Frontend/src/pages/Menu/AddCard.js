@@ -18,9 +18,9 @@ function AddCard() {
       });
       if (response.ok) {
         // Handle successful addition
-        console.log('Card added successfully');
+        alert('Card added successfully');
       } else {
-        console.error('Failed to add card');
+        alert('Failed to add card');
       }
     } catch (error) {
       console.error('Error adding card:', error);
