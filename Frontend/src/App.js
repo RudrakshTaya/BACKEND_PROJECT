@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import AddCard from './pages/Menu/AddCard';
 import UpdateCard from './pages/Menu/UpdateCard';
-
+import CardDetail from './pages/Menu/MenuDetail';
 function App() {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -92,8 +92,10 @@ function App() {
         <Route path="/update-card/:cardId" element={<UpdateCard />} />
 
         <Route path="/add-card" element={<AddCard />} />
+        <Route path="/cards/:cardId" element={<CardDetail />} /> {/* Card detail route */}
       </Routes>
-
+      
+     
       {isLoggedIn && <Footer />}
     </div>
   );

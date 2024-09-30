@@ -1,7 +1,7 @@
 
 
 const express = require('express');
-const { getCards, addCard, updateCard, deleteCard } = require('../Controllers/cards.Controllers');
+const { getCards, addCard, updateCard, deleteCard ,getCardById} = require('../Controllers/cards.Controllers');
 const router = express.Router();
 
 // Get all cards
@@ -15,6 +15,8 @@ router.put('/:id', updateCard);
 
 // Delete a card by ID
 router.delete('/:id', deleteCard);
+
+router.get('/:id', getCardById);
 
 module.exports = router;
 
