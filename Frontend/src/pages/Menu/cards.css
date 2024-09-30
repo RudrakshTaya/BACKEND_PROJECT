@@ -1,70 +1,74 @@
 .card-container {
-    display: flex;
-    gap: 50px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 30px;
-  }
-  
-  .card {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px grey;
-    width: 100%;
-    max-width: 400px;
-    max-height: auto;
-    justify-content:space-between ;
-    transition: transform 0.2s;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    
-  }
-  .card-link {
-    text-decoration: none; /* Remove underline */
-    color: inherit; /* Inherit color from parent */
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
 
-  }
-  .card:hover {
-    transform: scale(1.05);
-  }
-  
-  .card-image {
-    width: 90%;
-    height: 250px;
-    object-fit: cover;
-    margin: 18px 0px 0px 18px;
-    
-  }
-  .card-lower{
-    display: flex;
-  
-  }
-  .card-right{
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px grey;
+  width: 100%;
+  max-width: 400px;
+  transition: transform 0.2s;
+  overflow: hidden; /* Ensures no overflow */
+  display: flex;
+  flex-direction: column;
+}
 
-    margin-left: 15px;
-    margin-top: 10px;
-    width: 10%;
-    
-  
-  }
-  .card-left{
-    
-    width: 80%;
+.card-link {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
+}
 
-  }
-  .card-title {
-    font-size: 1.25rem;
-    font: bold;
-    margin-left: 18px;
-    margin-top: 10px;
-    /* margin: 16px 0 8px; */
-  }
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-image {
+  width: 90%;
+  height: 250px;
+  object-fit: cover;
+  margin: 18px 0 0 18px;
+}
+
+.card-lower {
+  display: flex;
+}
+
+.card-right {
+  margin-left: 15px;
+  margin-top: 10px;
+  width: 10%;
+}
+
+.card-left {
+  width: 80%;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold; /* Corrected to use font-weight */
+  margin-left: 18px;
+  margin-top: 10px;
+}
+
+.card-body {
+  font-size: 1rem;
+  margin-left: 10px;
+  margin-top: -5px;
   
-  .card-body {
-    font-size: 1rem;
-    margin-left: 10px;
-    margin-top: -5px;
-    
-  }
+ 
+  display: -webkit-box;               
+  
+  -webkit-line-clamp: 1;             
+  overflow: hidden;                   
+  text-overflow: ellipsis;            
+  
+  /* Ensure height is constrained */
+  line-height: 1;                   /* Set a line height */
+                
+}
