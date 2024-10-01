@@ -4,8 +4,8 @@ const { getReviews, addReview, updateReview, deleteReview } = require('../Contro
 const router = express.Router();
 
 // Make sure these functions exist in review.Controllers.js
-router.get('/', getReviews);
-router.post('/', addReview);
+router.get('/reviews', getReviews);
+router.post('/reviews', addReview);
 router.put('/:id', updateReview);
 router.delete('/:id', deleteReview);
 

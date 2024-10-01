@@ -25,6 +25,6 @@ app.use(session({
 // Routes
 app.use('/cards', cardRoutes);
 app.use('/users', userRoutes);
-app.use('/reviews', reviewRoutes);
+app.use('/api', reviewRoutes);
 
 module.exports = app;
