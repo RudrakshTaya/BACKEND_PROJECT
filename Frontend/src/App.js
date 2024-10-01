@@ -14,6 +14,8 @@ import { useLocation } from 'react-router-dom';
 import AddCard from './pages/Menu/AddCard';
 import UpdateCard from './pages/Menu/UpdateCard';
 import CardDetail from './pages/Menu/MenuDetail';
+import ReviewPage from './pages/ReviewPage';  // Ensure the path is correct
+
 function App() {
   const location = useLocation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +35,7 @@ function App() {
 
   return (
     <div>
-      { isLoggedIn && (
+      {isLoggedIn && (
         <Navbar expand='lg' className='bg-body-tertiary shadow'>
           <Container className="d-flex flex-row justify-space-between align-items-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.01)', color: 'white' }}>
             <Navbar.Brand>
@@ -43,7 +45,7 @@ function App() {
                 </svg>
                 <span className='mx-2 lh-1 fw-semibold'>
                   4'R
-                  <br></br>
+                  <br />
                   Restaurant
                 </span>
               </Link>
@@ -56,6 +58,7 @@ function App() {
                   <Link to='/menu' className='nav-link text-uppercase'>Menu</Link>
                   <Link to='/about' className='nav-link text-uppercase'>About</Link>
                   <Link to='/contact' className='nav-link text-uppercase'>Contact</Link>
+                  <Link to='/reviews' className='nav-link text-uppercase'>Reviews</Link> {/* Added link to ReviewPage */}
                 </Nav>
               </Navbar.Collapse>
             </div>
@@ -64,38 +67,17 @@ function App() {
       )}
 
       <Routes>
-        <Route
-          path="/"
-          element={
-            isLoggedIn ? <Home /> : <Navigate to="/login" replace />
-          }
-        />
-        <Route
-          path="/menu"
-          element={
-            isLoggedIn ? <Menu /> : <Navigate to="/login" replace />
-          }
-        />
-        <Route
-          path="/about"
-          element={
-            isLoggedIn ? <About /> : <Navigate to="/login" replace />
-          }
-        />
-        <Route
-          path="/contact"
-          element={
-            isLoggedIn ? <Contact /> : <Navigate to="/login" replace />
-          }
-        />
+        <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" replace />} />
+        <Route path="/menu" element={isLoggedIn ? <Menu /> : <Navigate to="/login" replace />} />
+        <Route path="/about" element={isLoggedIn ? <About /> : <Navigate to="/login" replace />} />
+        <Route path="/contact" element={isLoggedIn ? <Contact /> : <Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginSignup />} />
         <Route path="/update-card/:cardId" element={<UpdateCard />} />
-
         <Route path="/add-card" element={<AddCard />} />
         <Route path="/cards/:cardId" element={<CardDetail />} /> {/* Card detail route */}
+        <Route path="/reviews" element={isLoggedIn ? <ReviewPage /> : <Navigate to="/login" replace />} /> {/* Added route for ReviewPage */}
       </Routes>
-      
-     
+
       {isLoggedIn && <Footer />}
     </div>
   );

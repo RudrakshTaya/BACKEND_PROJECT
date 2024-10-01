@@ -38,3 +38,30 @@ body.login-page .navbar {
     font-size: 3rem;
   }
 }
+
+/* src/App.css */
+.App {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+strong {
+  display: block;
+  margin-top: 10px;
+}
