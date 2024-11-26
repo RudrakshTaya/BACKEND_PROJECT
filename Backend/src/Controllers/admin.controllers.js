@@ -9,9 +9,9 @@ const addFoodItem = async (req, res) => {
 
     // If an image is uploaded, upload it to Cloudinary
     if (req.files && req.files.length > 0) {
-      // Assuming multer handles multiple files and the images are available in req.files
+    // Assuming multer handles multiple files and the images are available in req.files
       const imagePromises = req.files.map(file =>
-        cloudinary.uploadOnCloudinary(file.path) // Cloudinary upload function
+        cloudinary.uploadOnCloudinary(file.path)  // Cloudinary upload function
       );
       
       const results = await Promise.all(imagePromises);
