@@ -45,4 +45,12 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Check if User is Authenticated
+router.get('/status', (req, res) => {
+    if (req.session.isAuthenticated) {
+        return res.json({ msg: 'User is logged in', user: req.session.user });
+    }
+    return res.status(401).json({ msg: 'Not logged in' });
+});
+
 module.exports = router;

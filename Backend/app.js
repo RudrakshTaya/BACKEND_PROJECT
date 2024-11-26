@@ -12,19 +12,36 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000', // Frontend URL (replace with your actual frontend URL)
+    credentials: true, // Allow cookies to be sent
+}));
 app.use(express.json());
 
 app.use(session({
     secret: 'your_secret_key',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false }
+    cookie: {
+        httpOnly: true,  // Helps prevent XSS attacks
+        secure: false,   // Set to true if using HTTPS in production
+        maxAge: 1000 * 60 * 60 * 24,  // 1 day expiration for session cookies
+    },
 }));
 
 // Routes
 app.use('/cards', cardRoutes);
 app.use('/users', userRoutes);
 app.use('/api', reviewRoutes);
+
+// Logout Route
+app.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({ msg: 'Error logging out' });
+        }
+        res.json({ msg: 'Logged out successfully' });
+    });
+});
 
 module.exports = app;
