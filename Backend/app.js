@@ -5,6 +5,7 @@ const connectDB = require('./src/Database/db');
 const cardRoutes = require('./src/Routes/cards.Routes');
 const userRoutes = require('./src/Routes/users.Routes');
 const reviewRoutes = require('./src/Routes/review.Routes');
+const adminRoutes =require('./src/Routes/admin.routes')
 
 const app = express();
 
@@ -26,5 +27,7 @@ app.use(session({
 app.use('/cards', cardRoutes);
 app.use('/users', userRoutes);
 app.use('/api', reviewRoutes);
+app.use('/admin', adminRoutes);
+
 
 module.exports = app;
