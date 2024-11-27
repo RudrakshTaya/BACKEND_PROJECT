@@ -94,7 +94,7 @@ const deleteFoodItem = async (req, res) => {
     // If images are associated with the food item, delete them from Cloudinary
     if (foodItem.images && foodItem.images.length > 0) {
       foodItem.images.forEach(async (image) => {
-        await cloudinary.v2.uploader.destroy(image.public_id); // Delete from Cloudinary
+       // await cloudinary.v2.uploader.destroy(image.public_id); // Delete from Cloudinary
       });
     }
 

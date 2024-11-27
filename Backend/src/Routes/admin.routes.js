@@ -9,6 +9,11 @@ const {
   deleteFoodItem,
 } = require('../Controllers/admin.controllers');
 
+const { adminLogin } = require('../Controllers/admin.login');
+
+
+
+router.post('/login', adminLogin);
 // Add a new food item
 router.post('/',upload.array('images',10), addFoodItem);
 

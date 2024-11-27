@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './adminDashboard.css';
+import { useNavigate } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,8 @@ const AdminDashboard = () => {
   });
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [alert, setAlert] = useState({ message: '', type: '' });
-
+  
+  const navigate = useNavigate();
   const API_BASE_URL = 'http://localhost:5002/admin'; // Adjust the base URL as per your server setup
 
   // Fetch all products using fetch
@@ -73,7 +75,7 @@ const AdminDashboard = () => {
   // Delete product using fetch
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`${API_BASE_URL}/products/${id}`, { method: 'DELETE' });
+      const res = await fetch(`${API_BASE_URL}/${id}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Failed to delete product.');
       
       setAlert({ message: 'Product deleted successfully!', type: 'success' });
@@ -95,6 +97,14 @@ const AdminDashboard = () => {
     setFormData({ ...formData, images: Array.from(files) });
   };
 
+  // Logout function
+  const handleLogout = () => {
+    // Clear the token from localStorage
+    localStorage.removeItem('token');
+    // Redirect to login page
+    navigate('/');
+  };
+
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -103,6 +113,9 @@ const AdminDashboard = () => {
     <div className="admin-dashboard">
       <h1>Admin Dashboard</h1>
       
+      {/* Logout Button */}
+      <button className="logout-btn" onClick={handleLogout}>Logout</button>
+
       {/* Alert messages */}
       {alert.message && (
         <div className={`alert ${alert.type === 'error' ? 'alert-error' : 'alert-success'}`}>
@@ -183,6 +196,11 @@ const AdminDashboard = () => {
             <p>{product.description}</p>
             <p>Price: ${product.price}</p>
             <p>Stock: {product.stock}</p>
+            <img 
+              src={product.images[0].url} 
+              alt={product.name} 
+              style={{ maxWidth: '20%', height: 'auto', borderRadius: '8px', marginBottom: '10px' }} 
+            />
             <button onClick={() => setSelectedProduct(product)}>Edit</button>
             <button onClick={() => handleDelete(product._id)}>Delete</button>
           </div>
