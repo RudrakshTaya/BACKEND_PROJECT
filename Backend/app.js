@@ -5,18 +5,23 @@ const connectDB = require('./src/Database/db');
 const cardRoutes = require('./src/Routes/cards.Routes');
 const userRoutes = require('./src/Routes/users.Routes');
 const reviewRoutes = require('./src/Routes/review.Routes');
-const adminRoutes =require('./src/Routes/admin.routes')
+const adminRoutes = require('./src/Routes/admin.routes');
 
 const app = express();
 
 // Connect to the database
 connectDB();
 
+// Allowed Origins
+const allowedOrigins = [
+    'http://localhost:3000',  // Frontend URL 1
+    'http://localhost:4000',  // Frontend URL 2 (example)
+    'https://your-production-frontend-url.com', // Production Frontend URL (example)
+];
+
 // Middleware
-app.use(cors({
-    origin: 'http://localhost:3000', // Frontend URL (replace with your actual frontend URL)
-    credentials: true, // Allow cookies to be sent
-}));
+app.use(cors());
+
 app.use(express.json());
 
 app.use(session({
@@ -35,7 +40,6 @@ app.use('/cards', cardRoutes);
 app.use('/users', userRoutes);
 app.use('/api', reviewRoutes);
 app.use('/admin', adminRoutes);
-
 
 // Logout Route
 app.post('/logout', (req, res) => {

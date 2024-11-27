@@ -64,8 +64,7 @@ const AdminDashboard = () => {
       setAlert({ message: message, type: 'success' });
       
       fetchProducts();
-      setFormData({ name: '', description: '', price: '', category: '', stock: '', images: [] });
-      setSelectedProduct(null);
+      resetForm();
     } catch (err) {
       console.error(err);
       setAlert({ message: 'Something went wrong. Please try again.', type: 'error' });
@@ -103,6 +102,25 @@ const AdminDashboard = () => {
     localStorage.removeItem('token');
     // Redirect to login page
     navigate('/');
+  };
+
+  // Reset form after success
+  const resetForm = () => {
+    setFormData({ name: '', description: '', price: '', category: '', stock: '', images: [] });
+    setSelectedProduct(null);
+  };
+
+  // Pre-fill form when editing a product
+  const handleEdit = (product) => {
+    setSelectedProduct(product);
+    setFormData({
+      name: product.name,
+      description: product.description,
+      price: product.price,
+      category: product.category,
+      stock: product.stock,
+      images: [] // Don't pre-load images here as they are handled by form submission
+    });
   };
 
   useEffect(() => {
@@ -180,7 +198,7 @@ const AdminDashboard = () => {
         {/* Display image previews */}
         <div className="image-previews">
           {formData.images && formData.images.map((image, index) => (
-            <img key={index} src={URL.createObjectURL(image)} alt="Preview" className="image-preview" />
+            <img key={index} src={URL.createObjectURL(image)} alt="Preview" className="image-preview"   style={{ maxWidth: '20%', height: 'auto', borderRadius: '8px', marginBottom: '10px' }} />
           ))}
         </div>
 
@@ -201,7 +219,7 @@ const AdminDashboard = () => {
               alt={product.name} 
               style={{ maxWidth: '20%', height: 'auto', borderRadius: '8px', marginBottom: '10px' }} 
             />
-            <button onClick={() => setSelectedProduct(product)}>Edit</button>
+            <button onClick={() => handleEdit(product)}>Edit</button>
             <button onClick={() => handleDelete(product._id)}>Delete</button>
           </div>
         ))}

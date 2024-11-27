@@ -7,9 +7,8 @@ const addFoodItem = async (req, res) => {
   try {
     let imageUrl = '';
 
-    // If an image is uploaded, upload it to Cloudinary
+    // If images are uploaded, upload them to Cloudinary
     if (req.files && req.files.length > 0) {
-    // Assuming multer handles multiple files and the images are available in req.files
       const imagePromises = req.files.map(file =>
         cloudinary.uploadOnCloudinary(file.path)  // Cloudinary upload function
       );
@@ -58,7 +57,7 @@ const updateFoodItem = async (req, res) => {
   try {
     let imageUrl = '';
 
-    // If an image is uploaded, upload it to Cloudinary
+    // If images are uploaded, upload them to Cloudinary
     if (req.files && req.files.length > 0) {
       const imagePromises = req.files.map(file =>
         cloudinary.uploadOnCloudinary(file.path)
@@ -68,16 +67,30 @@ const updateFoodItem = async (req, res) => {
       imageUrl = results.map(result => result.url); // Store Cloudinary URLs in an array
     }
 
-    const foodItem = await FoodItem.findByIdAndUpdate(
-      req.params.id,
-      { ...req.body, images: imageUrl.map(url => ({ url, alt: 'Food Image' })) }, 
-      { new: true, runValidators: true }
-    );
-    
+    const foodItem = await FoodItem.findById(req.params.id);
+
     if (!foodItem) {
       return res.status(404).json({ message: 'Food item not found' });
     }
-    res.status(200).json({ message: 'Food item updated successfully!', foodItem });
+
+    // If the food item already has images, delete them from Cloudinary before updating
+    if (foodItem.images && foodItem.images.length > 0) {
+      foodItem.images.forEach(async (image) => {
+        // Assuming cloudinary.uploadOnCloudinary also has a method for deleting images
+        // await cloudinary.v2.uploader.destroy(image.public_id); // Uncomment to delete from Cloudinary
+      });
+    }
+
+    const updatedFoodItem = await FoodItem.findByIdAndUpdate(
+      req.params.id,
+      { 
+        ...req.body, 
+        images: imageUrl.length > 0 ? imageUrl.map(url => ({ url, alt: 'Food Image' })) : foodItem.images 
+      },
+      { new: true, runValidators: true }
+    );
+    
+    res.status(200).json({ message: 'Food item updated successfully!', foodItem: updatedFoodItem });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -94,7 +107,8 @@ const deleteFoodItem = async (req, res) => {
     // If images are associated with the food item, delete them from Cloudinary
     if (foodItem.images && foodItem.images.length > 0) {
       foodItem.images.forEach(async (image) => {
-       // await cloudinary.v2.uploader.destroy(image.public_id); // Delete from Cloudinary
+        // Assuming cloudinary.uploadOnCloudinary also has a method for deleting images
+        // await cloudinary.v2.uploader.destroy(image.public_id); // Uncomment to delete from Cloudinary
       });
     }
 
