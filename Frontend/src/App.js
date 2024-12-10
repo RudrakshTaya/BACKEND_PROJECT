@@ -15,6 +15,7 @@ import AddCard from './pages/Menu/AddCard';
 import UpdateCard from './pages/Menu/UpdateCard';
 import CardDetail from './pages/Menu/MenuDetail';
 import ReviewPage from './pages/ReviewPage';  // Ensure the path is correct
+import Cart from './pages/cart';
 
 function App() {
   const location = useLocation();
@@ -56,9 +57,10 @@ function App() {
                 <Nav className='d-flex flex-row'>
                   <Link to='/' className='nav-link active text-uppercase'>Home</Link>
                   <Link to='/menu' className='nav-link text-uppercase'>Menu</Link>
-                  <Link to='/about' className='nav-link text-uppercase'>About</Link>
+                  
                   <Link to='/contact' className='nav-link text-uppercase'>Contact</Link>
                   <Link to='/reviews' className='nav-link text-uppercase'>Reviews</Link> {/* Added link to ReviewPage */}
+                  <Link to ='/cart' className='nav-link text-uppercase'> Cart</Link>
                 </Nav>
               </Navbar.Collapse>
             </div>
@@ -75,6 +77,7 @@ function App() {
         <Route path="/update-card/:cardId" element={<UpdateCard />} />
         <Route path="/add-card" element={<AddCard />} />
         <Route path="/cards/:cardId" element={<CardDetail />} /> {/* Card detail route */}
+        <Route path ="/cart" element={<Cart/>}/>
         <Route path="/reviews" element={isLoggedIn ? <ReviewPage /> : <Navigate to="/login" replace />} /> {/* Added route for ReviewPage */}
       </Routes>
 

@@ -30,11 +30,11 @@ const CardDetail = () => {
 
   return (
     <div className="card-detail">
-      <h1>{card.title}</h1>
-      <img src={card.imgSrc} alt={card.title} />
+      <h1>{card.name}</h1>
+      <img src={card.images[0].url} alt={card.title} />
       <p>{card.text}</p>
       <div>Price: {card.price}</div>
-      <div>Rating: {card.rating}★</div>
+      <div>Rating: {card.ratings.averageRating}★</div>
     </div>
   );
 };

@@ -17,26 +17,31 @@ const LoginSignup = () => {
         if (action === "Login") {
             try {
                 const response = await axios.post('http://localhost:5002/users/login', { email, password });
-                if (response.data.msg === 'Logged in successfully') {
-                    localStorage.setItem('isAuthenticated', 'true');
-                    navigate('/');
+                if (response.status === 200) {
+                    const { token, user } = response.data; // Assuming response contains token and user data
+                    localStorage.setItem('token', token);
+                    localStorage.setItem('user', JSON.stringify(user));
+                    alert('Login successful!');
+                    navigate('/'); // Redirect to home or dashboard
                 } else {
-                    alert(response.data.msg);
+                    alert(response.data.msg || 'Login failed');
                 }
             } catch (error) {
                 alert('Error logging in. Please check your credentials and try again.');
+                console.error(error);
             }
         } else {
             try {
                 const response = await axios.post('http://localhost:5002/users/signup', { name, email, password });
-                if (response.data.msg === 'User registered successfully') {
-                    alert('Signed up successfully! Please log in.');
+                if (response.status === 201) {
+                    alert('Signup successful! Please log in.');
                     setAction('Login');
                 } else {
-                    alert(response.data.msg);
+                    alert(response.data.msg || 'Signup failed');
                 }
             } catch (error) {
                 alert('Error signing up. Please try again.');
+                console.error(error);
             }
         }
     };
@@ -106,6 +111,6 @@ const LoginSignup = () => {
             </div>
         </div>
     );
-}
+};
 
 export default LoginSignup;
