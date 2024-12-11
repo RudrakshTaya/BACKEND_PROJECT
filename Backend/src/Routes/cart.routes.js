@@ -11,7 +11,7 @@ router.post('/', authMiddleware, addToCart);
 router.get('/', authMiddleware, getCart);
 
 // Remove item from cart
-router.delete('/:productId', authMiddleware, removeFromCart);
+router.post('/remove', authMiddleware, removeFromCart);
 
 
 module.exports = router;

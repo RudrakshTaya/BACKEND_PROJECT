@@ -16,6 +16,7 @@ import UpdateCard from './pages/Menu/UpdateCard';
 import CardDetail from './pages/Menu/MenuDetail';
 import ReviewPage from './pages/ReviewPage';  // Ensure the path is correct
 import Cart from './pages/cart';
+import ConfirmationPage from './pages/confirm';
 
 function App() {
   const location = useLocation();
@@ -72,13 +73,14 @@ function App() {
         <Route path="/" element={isLoggedIn ? <Home /> : <Navigate to="/login" replace />} />
         <Route path="/menu" element={isLoggedIn ? <Menu /> : <Navigate to="/login" replace />} />
         <Route path="/about" element={isLoggedIn ? <About /> : <Navigate to="/login" replace />} />
-        <Route path="/contact" element={isLoggedIn ? <Contact /> : <Navigate to="/login" replace />} />
+        <Route path="/contact" element={isLoggedIn ? <Contact /> : <Navigate to="/contact" replace />} />
         <Route path="/login" element={<LoginSignup />} />
         <Route path="/update-card/:cardId" element={<UpdateCard />} />
         <Route path="/add-card" element={<AddCard />} />
         <Route path="/cards/:cardId" element={<CardDetail />} /> {/* Card detail route */}
         <Route path ="/cart" element={<Cart/>}/>
         <Route path="/reviews" element={isLoggedIn ? <ReviewPage /> : <Navigate to="/login" replace />} /> {/* Added route for ReviewPage */}
+        <Route path="/confirmation" element={<ConfirmationPage />} />
       </Routes>
 
       {isLoggedIn && <Footer />}

@@ -34,9 +34,13 @@ exports.addToCart = async (req, res) => {
     }
 
     await cart.save();
-    res.status(200).json({ message: 'Item added to cart successfully', cart });
+    const populatedCart = await cart.populate({
+      path: 'items.productId',
+      select: 'name price images',
+    });
+    res.status(200).json({ message: 'Item added to cart successfully', cart: populatedCart });
   } catch (error) {
-    console.error(error);
+    console.error('Error adding item to cart:', error);
     res.status(500).json({ message: 'Error adding item to cart' });
   }
 };
@@ -46,14 +50,17 @@ exports.getCart = async (req, res) => {
   const userId = req.user.id;
 
   try {
-    const cart = await Cart.findOne({ userId }).populate('items.productId', 'name price images');
-    if (!cart) {
+    const cart = await Cart.findOne({ userId }).populate({
+      path: 'items.productId',
+      select: 'name price images',
+    });
+    if (!cart || cart.items.length === 0) {
       return res.status(404).json({ message: 'Cart is empty' });
     }
 
     res.status(200).json(cart);
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching cart:', error);
     res.status(500).json({ message: 'Error fetching cart' });
   }
 };
@@ -69,11 +76,22 @@ exports.removeFromCart = async (req, res) => {
       return res.status(404).json({ message: 'Cart not found' });
     }
 
-    cart.items = cart.items.filter((item) => item.productId.toString() !== productId);
+    const itemIndex = cart.items.findIndex((item) => item.productId.toString() === productId);
+    if (itemIndex === -1) {
+      console.error('Product not found in cart:', { productId, cartItems: cart.items });
+      return res.status(404).json({ message: 'Product not found in cart' });
+    }
+
+    cart.items.splice(itemIndex, 1); // Remove the item
+
     await cart.save();
-    res.status(200).json({ message: 'Item removed from cart successfully', cart });
+    const updatedCart = await cart.populate({
+      path: 'items.productId',
+      select: 'name price images',
+    });
+    res.status(200).json({ message: 'Item removed from cart successfully', cart: updatedCart });
   } catch (error) {
-    console.error(error);
+    console.error('Error removing item from cart:', error);
     res.status(500).json({ message: 'Error removing item from cart' });
   }
 };

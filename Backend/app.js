@@ -7,7 +7,8 @@ const userRoutes = require('./src/Routes/users.Routes');
 const reviewRoutes = require('./src/Routes/review.Routes');
 const adminRoutes = require('./src/Routes/admin.routes');
 const cartRoutes =require('./src/Routes/cart.routes');
-
+const contactRoutes =require('./src/Routes/contact.routes');
+const placeOrder=require('./src/Routes/order.routes')
 const app = express();
 
 // Connect to the database
@@ -37,6 +38,8 @@ app.use('/users', userRoutes);
 app.use('/api', reviewRoutes);
 app.use('/admin', adminRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/contact', contactRoutes);
+app.use('/api/order',placeOrder);
 // Logout Route
 app.post('/logout', (req, res) => {
     req.session.destroy((err) => {
